@@ -17,6 +17,15 @@ if (!isset($_SESSION['num_users']) || $_SESSION['num_users'] < 2) {
 // check if add user button was pressed
 if (isset($_POST['addUser']) && htmlspecialchars($_POST['addUser']) === 'add') {
     $num_users++;
+} elseif (htmlspecialchars($_POST['addUser']) === 'sub') {
+    if ($num_users > 2){
+        $num_users--;
+    }
+}
+if ($num_users == 2){
+    $remove_disable = 'disabled>Minimum users';
+} else {
+    $remove_disable = '>Remove a User';
 }
 
 // set num users
@@ -142,10 +151,25 @@ for ($i = 1; $i <= $num_users; $i++){
             <h2>Login</h2>
             <?php
             for ($i = 0; $i < $num_users; $i++){
-                echo $login_forms[$i];
+                if ($i % 2 == 0){
+                    echo '<div class="form-group">';
+                    echo $login_forms[$i];
+                    if ($i == $num_users - 1) {
+                        echo '</div>';
+                    }
+                } elseif ($i % 2 == 1) {
+                    echo $login_forms[$i];
+                    echo '</div>';
+                }
+
             }
             ?>
-            <button class="link-button" type="submit" formaction="" formmethod="post" value="add" name="addUser" id="addUser">Add Another User</button>
+            <form method="post">
+                <button class="link-button" type="submit" value="add" name="addUser" id="addUser">Add Another User</button>
+            </form>
+            <form method="post">
+                <button class="link-button" type="submit" value="sub" name="addUser" id="subUser"<?=$remove_disable?></button>
+            </form>
             <a href="signup.php"><button class="link-button" type="button">Create New Account</button></a>
             <a href="play.php"><button class="link-button" type="button">Play Jeopardy!</button></a>
         </main>
