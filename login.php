@@ -37,7 +37,7 @@ if ((isset($_POST['user']) && $_POST['user'] !== '') && (isset($_POST['pass']) &
     $new_pass = $_POST['pass'];
     $new_hash_pass = password_hash($new_pass, PASSWORD_DEFAULT); // hash password for security
 
-    // TODO validate that the new username is not taken, redirect back to signup.php if it is
+    // TODO validation: new username is not taken, redirect back to signup.php if it is
 
     $already_signed_in = false;
     // check that user is not already signed in
@@ -65,8 +65,6 @@ if ((isset($_POST['user']) && $_POST['user'] !== '') && (isset($_POST['pass']) &
 
 }
 
-// TODO implement logout
-
 $loggedin = array(); // array will store numbers of users that are logged in
 
 $login_forms = array(); // array will store the form visual for all users, logged in or not
@@ -75,16 +73,33 @@ $login_forms = array(); // array will store the form visual for all users, logge
 for ($i = 1; $i <= $num_users; $i++){
     // first check if user is already logged in, skip if so
     if (isset($_SESSION['user'.$i]) && $_SESSION['user'.$i] !== '') {
-        $this_user = $_SESSION['user'.$i];
-
-        array_push($login_forms, "<form class=\"login-form\" method=\"post\">
+        // TODO implement logout
+        if (isset($_POST['logout']) && $_POST['logout'] === "out$i"){
+            // user wants to log out
+            unset($_SESSION['user'.$i]);
+            // TODO validation: display logout message
+            array_push($login_forms, "<form class=\"login-form\" method=\"post\">
                 <legend>User $i</legend>
                 <label for=\"user$i\">Username: </label>
-                <input type=\"text\" name=\"user$i\" id=\"user$i\" placeholder=\"$this_user\" disabled>
+                <input type=\"text\" name=\"user$i\" id=\"user$i\" placeholder=\"epictriviafan_123\" required>
                 <label for=\"pass$i\">Password: </label>
-                <input type=\"password\" name=\"pass$i\" id=\"pass$i\" disabled>
-                <button type=\"submit\">Log out</button>
+                <input type=\"password\" name=\"pass$i\" id=\"pass$i\" required>
+                <button type=\"submit\">Log In</button>
             </form>");
+        } else {
+            $this_user = $_SESSION['user'.$i];
+
+            array_push($login_forms, "<form class=\"login-form\" method=\"post\">
+                    <legend>User $i</legend>
+                    <label for=\"user$i\">Username: </label>
+                    <input type=\"text\" name=\"user$i\" id=\"user$i\" placeholder=\"$this_user\" disabled>
+                    <label for=\"pass$i\">Password: </label>
+                    <input type=\"password\" name=\"pass$i\" id=\"pass$i\" disabled>
+                    </form>
+                    <form method=\"post\">
+                    <button class=\"link-button\" type=\"submit\" value=\"out$i\" name=\"logout\" id=\"logout\">Log Out</button>
+                    </form>");
+            }
      
     // check if user info was posted
     } elseif (isset($_POST['user'.$i]) && isset($_POST['pass'.$i])){
@@ -98,7 +113,7 @@ for ($i = 1; $i <= $num_users; $i++){
                 break;
             }
         }
-        // TODO give error if user was not found
+        // TODO validation: give error if user was not found
 
         // check password
         if (password_verify($_POST['pass'.$i], addslashes($found_user[1]))){
@@ -106,13 +121,15 @@ for ($i = 1; $i <= $num_users; $i++){
             array_push($login_forms, "<form class=\"login-form\" method=\"post\">
                 <legend>User $i</legend>
                 <label for=\"user$i\">Username: </label>
-                <input type=\"text\" name=\"user$i\" id=\"user$i\" placeholder=\"".htmlspecialchars($this_user)."\" disabled>
+                <input type=\"text\" name=\"user$i\" id=\"user$i\" placeholder=\"".htmlspecialchars($this_user)."\" value=\"\" disabled>
                 <label for=\"pass$i\">Password: </label>
-                <input type=\"password\" name=\"pass$i\" id=\"pass$i\" placeholder=\"\" disabled>
-                <button type=\"submit\">Log out</button>
-            </form>");
+                <input type=\"password\" name=\"pass$i\" id=\"pass$i\" disabled>
+                </form>
+                <form method=\"post\">
+                <button class=\"link-button\" type=\"submit\" value=\"out$i\" name=\"logout\" id=\"logout\">Log Out</button>
+                </form>");
         } else {
-            // TODO give error if password does not match
+            // TODO validation: give error if password does not match
             array_push($login_forms, "<form class=\"login-form\" method=\"post\">
                 <legend>User $i</legend>
                 <label for=\"user$i\">Username: </label>
@@ -159,7 +176,6 @@ for ($i = 1; $i <= $num_users; $i++){
                     echo $login_forms[$i];
                     echo '</div>';
                 }
-
             }
             ?>
             <form method="post">
