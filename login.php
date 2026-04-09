@@ -73,9 +73,8 @@ $login_forms = array(); // array will store the form visual for all users, logge
 for ($i = 1; $i <= $num_users; $i++){
     // first check if user is already logged in, skip if so
     if (isset($_SESSION['user'.$i]) && $_SESSION['user'.$i] !== '') {
-        // TODO implement logout
         if (isset($_POST['logout']) && $_POST['logout'] === "out$i"){
-            // user wants to log out
+            // unset the user's session var
             unset($_SESSION['user'.$i]);
             // TODO validation: display logout message
             array_push($login_forms, "<form class=\"login-form\" method=\"post\">

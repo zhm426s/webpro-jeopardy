@@ -1,3 +1,21 @@
+<?php
+session_start();
+if (!isset($_SESSION['num_users']) || $_SESSION['num_users'] < 2) {
+    $num_users = 2;
+} else {
+    $num_users = $_SESSION['num_users'];
+    }
+
+for ($i = 1; $i <= $num_users; $i++){
+    if ((!isset($_SESSION['user'.$i]) || $_SESSION['user'.$i] === '') && !isset($_SESSION['user'.$i.'_points'])){
+        // TODO validation: display error message saying that not all users are signed in
+        echo "Error: not all users signed in"; // for testing only
+        exit;
+    }
+}
+
+// TODO leaderboard logic: get and sort point values
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
