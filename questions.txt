@@ -1,0 +1,29 @@
+Movies;1;"He don't know talkin' good like me & you. So his vocabulistics is limited to I & am & Groot" is explained in this 2014 film;Guardians of the Galaxy
+Movies;2;"Bohemian Rhapsody" earned him an Oscar for his "mercurial" performance;Rami Malek
+Movies;3;Robert Pattinson is the title character (& the reborn versions thereof) in this 2025 film from Bong Joon Ho;Mickey 17
+Movies;4;Peter Sarsgaard is Roone Arledge, but the footage of Jim McKay is real in "September 5" about a tragedy at this city's Olympics;Munich
+Movies;5;This 1997 sci-fi film with Laurence Fishburne shares its name with the boundary at the edge of a black hole;Event Horizon
+
+Geography;1;This most populous country in Africa is also one of the richest;Nigeria
+Geography;2;In 1918 this country adopted a 2-color flag representing blue skies over golden wheat fields; it was readopted in 1992;Ukraine
+Geography;3;This North Carolina city is the eastern gateway to the Great Smoky Mountains;Asheville
+Geography;4;For more years Çatalhöyük, a city with houses but no streets, thrived in the Anatolia region of what's now this country;Turkey
+Geography;5;India shares a more than 400-mile border with this country ruled by King Jigme Khesar Namgyel Wangchuck;Bhutan
+
+Riddle;1;This has to be broken before it can be used;Egg
+Riddles;2;I’m tall when I’m young, and I’m short when I’m old.This is what I am;Candle
+Riddles;3;This begins with an "e" and only contains one letter;Envelope
+Riddles;4;This 4-letter word can be written forward, backward, or upside down, and can still be read from left to right;Noon
+Riddles;5;The day before yesterday I was 21, and next year I will be 24. This is my birthday;December 31
+
+Sports;1;The cover of the video game NHL 2026 from EA Sports features Matthew Tkachuk of this Florida team raising the Stanley Cup;Panthers
+Sports;2;This QB moved from the Jets to the Steelers in 2025 & led his new team over his former one 34-32 on opening day;Rodgers
+Sports;3;This race entered the Olympic Games in 1900, though it was only standardized at 3,000 meters later;Steeplechase
+Sports;4;Also a place to store fishing gear, in football it's the area of the offensive backfield seen here;Tackle box
+Sports;5;One of the most successful F1 drivers of all time, he holds the record for career victories & was knighted in 2021;Hamilton
+
+Music;1;This title ends the Lady Gaga lyric "I'm beautiful in my way 'cause God makes no mistakes, I'm on the right track, baby, I was...";Born this way
+Music;2;This song by Jay-Z about having nearly 100 complications took the title & hook from an Ice-T song;99 Problems
+Music;3;In a hit from 2005, she was asked, "What's it like in New York City, I'm a thousand miles away, but girl, tonight, you look so pretty";Delilah
+Music;4;Michelle Pfeiffer was incredibly flattered to be namechecked in this hit, Billboard's Hot 100 No. 1 song of the 2010s;Uptown Funk
+Music;5;With "Le Freak", finally someone was urging you to freak out--this disco band, whose name rhymes with the song title;Chic
