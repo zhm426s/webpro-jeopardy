@@ -10,7 +10,7 @@ Geography;3;This North Carolina city is the eastern gateway to the Great Smoky M
 Geography;4;For more years Çatalhöyük, a city with houses but no streets, thrived in the Anatolia region of what's now this country;Turkey
 Geography;5;India shares a more than 400-mile border with this country ruled by King Jigme Khesar Namgyel Wangchuck;Bhutan
 
-Riddle;1;This has to be broken before it can be used;Egg
+Riddles;1;This has to be broken before it can be used;Egg
 Riddles;2;I’m tall when I’m young, and I’m short when I’m old.This is what I am;Candle
 Riddles;3;This begins with an "e" and only contains one letter;Envelope
 Riddles;4;This 4-letter word can be written forward, backward, or upside down, and can still be read from left to right;Noon
