@@ -5,7 +5,7 @@ Movies;4;Peter Sarsgaard is Roone Arledge, but the footage of Jim McKay is real 
 Movies;5;This 1997 sci-fi film with Laurence Fishburne shares its name with the boundary at the edge of a black hole;Event Horizon
 
 Geography;1;This most populous country in Africa is also one of the richest;Nigeria
-Geography;2;In 1918 this country adopted a 2-color flag representing blue skies over golden wheat fields; it was readopted in 1992;Ukraine
+Geography;2;In 1918 this country adopted a 2-color flag representing blue skies over golden wheat fields, it was readopted in 1992;Ukraine
 Geography;3;This North Carolina city is the eastern gateway to the Great Smoky Mountains;Asheville
 Geography;4;For more years Çatalhöyük, a city with houses but no streets, thrived in the Anatolia region of what's now this country;Turkey
 Geography;5;India shares a more than 400-mile border with this country ruled by King Jigme Khesar Namgyel Wangchuck;Bhutan

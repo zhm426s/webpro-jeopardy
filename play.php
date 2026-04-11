@@ -1,5 +1,77 @@
 <?php
+// function for getting and setting this game's question bank
+function getQuestions(){
+    // get array of all questions, grouped by category
+    $exist_qs = array();
+    $this_cat = '';
+    $cat_ptr = -1;
+    foreach(file('questions.txt') as $line) {
+        // assumes questions are grouped by category with spaces between
+        $this_q = explode(';', trim($line));
+        if ($this_q[0] === ''){
+            continue;
+        }
+        if ($this_q[0] !== $this_cat){
+            $cat_ptr++;
+            $this_cat = $this_q[0];
+            array_push($exist_qs, array());
+        }
+        array_push($exist_qs[$cat_ptr], $this_q);
+    }
+
+    // array storing all category names: should be updated if more categories are added
+    $all_cats = array("Movies", "Geography", "Riddles", "Sports", "Music");
+    // put together question bank for this game: 5 categories x 5 levels + 1 for cat names
+    $game_qs = array(
+        array('cat_name' => '', 1 => array('q' => '', 'a' => ''), 2 => array('q' => '', 'a' => ''), 3 => array('q' => '', 'a' => ''), 4 => array('q' => '', 'a' => ''), 5 => array('q' => '', 'a' => '')), 
+        array('cat_name' => '', 1 => array('q' => '', 'a' => ''), 2 => array('q' => '', 'a' => ''), 3 => array('q' => '', 'a' => ''), 4 => array('q' => '', 'a' => ''), 5 => array('q' => '', 'a' => '')), 
+        array('cat_name' => '', 1 => array('q' => '', 'a' => ''), 2 => array('q' => '', 'a' => ''), 3 => array('q' => '', 'a' => ''), 4 => array('q' => '', 'a' => ''), 5 => array('q' => '', 'a' => '')), 
+        array('cat_name' => '', 1 => array('q' => '', 'a' => ''), 2 => array('q' => '', 'a' => ''), 3 => array('q' => '', 'a' => ''), 4 => array('q' => '', 'a' => ''), 5 => array('q' => '', 'a' => '')), 
+        array('cat_name' => '', 1 => array('q' => '', 'a' => ''), 2 => array('q' => '', 'a' => ''), 3 => array('q' => '', 'a' => ''), 4 => array('q' => '', 'a' => ''), 5 => array('q' => '', 'a' => ''))
+        );
+    $game_cats = array();
+
+    // get category placements
+    $this_cat = $all_cats[array_rand($all_cats)];
+    array_push($game_cats, $this_cat);
+    // get last 4 categories in order
+    for ($i = 0; $i < 4; $i++){
+        $this_cat = $all_cats[array_rand($all_cats)];
+        while (in_array($this_cat, $game_cats)){
+            $this_cat = $all_cats[array_rand($all_cats)];
+        }
+        array_push($game_cats, $this_cat);
+    }
+
+    // set category names in game_qs and pick questions for each slot
+    foreach ($game_cats as $i => $cat){
+        $game_qs[$i]['cat_name'] = $cat;
+        $q_bank = array();
+        // find the category's question bank in exist_qs
+        foreach ($exist_qs as $cat_bank){
+            if ($cat_bank[0][0] === $cat){
+                $q_bank = $cat_bank;
+            }
+        }
+        // set questions by picking randomly
+        $set_qs_for_cat = 0;
+        while ($set_qs_for_cat < 5){
+            $rand_q = $q_bank[array_rand($q_bank)];
+            if ($game_qs[$i][$rand_q[1]]['q'] === '') { // if the question for this category matching the random question's level isnt set
+                $game_qs[$i][$rand_q[1]]['q'] = $rand_q[2]; // set question text
+                $game_qs[$i][$rand_q[1]]['a'] = $rand_q[3]; // set answer text
+                $set_qs_for_cat++;
+            }
+        }
+    }
+
+    return $game_qs;
+
+}
+
 session_start();
+
+var_dump(getQuestions());
 
 if (!isset($_SESSION['num_users']) || $_SESSION['num_users'] < 2) {
     $num_users = 2;
