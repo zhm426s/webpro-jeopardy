@@ -90,7 +90,7 @@ for ($i = 1; $i <= $num_users; $i++) {
         if (isset($_POST['logout']) && $_POST['logout'] === "out$i") {
             // unset the user's session var
             unset($_SESSION['user' . $i]);
-            // TODO validation: display logout message
+            $_SESSION['logout_message'] = "User logged out successfully.";
             array_push($login_forms, "<form class=\"login-form\" method=\"post\">
                 <legend>User $i</legend>
                 <label for=\"user$i\">Username: </label>
@@ -192,6 +192,12 @@ for ($i = 1; $i <= $num_users; $i++) {
                 echo $login_forms[$i];
                 echo '</div>';
             }
+        }
+        ?>
+        <?php
+        if (isset($_SESSION['logout_message'])) {
+            echo "<p class='success'>" . $_SESSION['logout_message'] . "</p>";
+            unset($_SESSION['logout_message']);
         }
         ?>
         <form method="post">
