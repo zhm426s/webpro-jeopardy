@@ -195,6 +195,12 @@ for ($i = 1; $i <= $num_users; $i++) {
         }
         ?>
         <?php
+        if (isset($_SESSION['leaderboard_error'])) {
+            echo "<p class='error'>" . $_SESSION['leaderboard_error'] . "</p>";
+            unset($_SESSION['leaderboard_error']);
+        }
+        ?>
+        <?php
         if (isset($_SESSION['logout_message'])) {
             echo "<p class='success'>" . $_SESSION['logout_message'] . "</p>";
             unset($_SESSION['logout_message']);
