@@ -49,7 +49,11 @@ usort($leaderboard, function ($a, $b) {
     <main>
         <h2>Game Results</h2>
         <ol class="leaderboard">
-            <li>[Username] [Points]</li>
+            <?php
+            foreach ($leaderboard as $player) {
+                echo "<li>" . htmlspecialchars($player['username']) . " - " . $player['points'] . " Points</li>";
+            }
+            ?>//display leaderboard
         </ol>
         <a href="login.php"><button class="link-button" type="button">Go to Home</button></a>
         <a href="play.php"><button class="link-button" type="button">Play Again!</button></a>
