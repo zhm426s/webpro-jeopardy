@@ -14,7 +14,24 @@ for ($i = 1; $i <= $num_users; $i++) {
     }
 }
 
-// TODO leaderboard logic: get and sort point values
+$leaderboard = array();
+
+for ($i = 1; $i <= $num_users; $i++) {
+    if (isset($_SESSION['user' . $i])) {
+        $username = $_SESSION['user' . $i];
+        $points = isset($_SESSION['user' . $i . '_points']) ? $_SESSION['user' . $i . '_points'] : 0;
+
+        $leaderboard[] = array(
+            'username' => $username,
+            'points' => $points
+        );
+    }
+}
+
+// sort highest to lowest points
+usort($leaderboard, function ($a, $b) {
+    return $b['points'] - $a['points'];
+});
 ?>
 <!DOCTYPE html>
 <html lang="en">
