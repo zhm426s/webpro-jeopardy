@@ -1,47 +1,57 @@
+<?php
+$error = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = trim($_POST["user1"]);
+    $password = trim($_POST["pass1"]);
+
+    if ($username == "" || $password == "") {
+        $error = "All fields are required.";
+    } elseif (strlen($password) < 6) {
+        $error = "Password must be at least 6 characters.";
+    } else {
+        $users = file("users.txt", FILE_IGNORE_NEW_LINES);
+        foreach ($users as $user) {
+            list($storedUser, $storedPass) = explode(",", $user);
+            if ($storedUser === $username) {
+                $error = "Username already exists.";
+                break;
+            }
+        }
+
+        if ($error == "") {
+            file_put_contents("users.txt", "$username,$password\n", FILE_APPEND);
+            header("Location: login.php");
+            exit();
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <title>Jeopardy- Signup</title>
-    <meta charset="UTF-8">
+    <title>Signup</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
-<script>
-    function validateForm() {
-        let username = document.forms["signupForm"]["username"].value;
-        let password = document.forms["signupForm"]["password"].value;
-
-        if (username === "" || password === "") {
-            alert("All fields must be filled out");
-            return false;
-        }
-
-        if (password.length < 6) {
-            alert("Password must be at least 6 characters");
-            return false;
-        }
-
-        return true;
-    }
-</script>
-
 <body>
-    <header>
-        <h1>Jeopardy</h1>
-    </header>
-    <main>
-        <h2>Sign Up</h2>
-        <form class="signup-form" method="post" action="login.php" name="signupForm" onsubmit="return validateForm()">
-            <legend>New User</legend>
-            <label for="user">Username: </label>
-            <input type="text" name="user" id="user" placeholder="epictriviafan_123" required>
-            <label for="pass">Password: </label>
-            <input type="password" name="pass" id="pass" required>
-            <button type="submit">Create Account</button>
-        </form>
-        <a href="login.php"><button class="link-button" type="button">Log in with existing account</button></a>
-    </main>
+
+    <h1>Signup</h1>
+
+    <?php if ($error != ""): ?>
+        <p class="error"><?= $error ?></p>
+    <?php endif; ?>
+
+    <form method="post">
+        <input type="text" name="user1" placeholder="Username">
+        <input type="password" name="pass1" placeholder="Password">
+        <button type="submit">Create Account</button>
+    </form>
+
+    <a href="login.php">Already have an account? Login</a>
+
 </body>
 
 </html>
