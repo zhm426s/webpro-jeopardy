@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $users = file("users.txt", FILE_IGNORE_NEW_LINES);
         foreach ($users as $user) {
-            list($storedUser, $storedPass) = explode(",", $user);
+            list($storedUser, $storedPass) = explode(";", $user); // updated line
             if ($storedUser === $username) {
                 $error = "Username already exists.";
                 break;
@@ -20,7 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if ($error == "") {
-            file_put_contents("users.txt", "$username,$password\n", FILE_APPEND);
+            $hashed = password_hash($password, PASSWORD_DEFAULT); // better security
+            file_put_contents("users.txt", "$username;$hashed\n", FILE_APPEND); // fix
             header("Location: login.php");
             exit();
         }
