@@ -80,8 +80,7 @@ if (!isset($_SESSION['num_users']) || $_SESSION['num_users'] < 2) {
 // ensure all users are logged in, and get/initiate points if so
 for ($i = 1; $i <= $num_users; $i++){
     if (!isset($_SESSION['user'.$i]) || $_SESSION['user'.$i] === ''){
-        // TODO validation: display error message saying that not all users are signed in
-        echo "Error: not all users signed in"; // for testing only
+        echo "Error: not all users signed in";
         exit;
     } else {
         if (!isset($_SESSION['user'.$i.'_points'])){
@@ -146,6 +145,7 @@ if (isset($_POST['answer'])){
     $curr_q = (int) substr($_SESSION['curr_question'][0], 3, 1);
     if (strpos(strtolower($_POST['answer']), strtolower($qs[$curr_cat][$curr_q]['a'])) !== false) {
         if (sizeof($_SESSION['prev_questions']) == 25){
+            $_SESSION['user'.$user_turn.'_points'] += 200 * $curr_q;
             header("Location: leaderboard.php");
             exit();
         } else {
