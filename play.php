@@ -78,7 +78,6 @@ if (!isset($_SESSION['num_users']) || $_SESSION['num_users'] < 2) {
     }
 
 // ensure all users are logged in, and get/initiate points if so
-$scoreboard = '';
 for ($i = 1; $i <= $num_users; $i++){
     if (!isset($_SESSION['user'.$i]) || $_SESSION['user'.$i] === ''){
         // TODO validation: display error message saying that not all users are signed in
@@ -89,7 +88,6 @@ for ($i = 1; $i <= $num_users; $i++){
             // initiate point session var
             $_SESSION['user'.$i.'_points'] = 0;
         }
-        $scoreboard = $scoreboard . "<li>" . $_SESSION['user'.$i] . ": " . $_SESSION['user'.$i.'_points'] . " points</li>";
     }
 }
 
@@ -106,7 +104,6 @@ if ($user_turn == 0) {
 
     
 }
-$turn_text = 'It is '.$_SESSION['user'.$user_turn]."'s turn";
 
 // check if questions have already been generated
 if (!isset($_SESSION['questions'])){
@@ -125,15 +122,14 @@ if (!isset($_SESSION['prev_questions'])) {
 
 // get question board + text setup
 $q_board_html = "";
-$curr_q_text = "Choose a question.";
-$_SESSION['curr_question'] = "";
+$curr_q_text = "Choose a question"; // current q id, user who selected the questio
 for ($i = 0; $i < 5; $i++){
     $q_board_html = $q_board_html . "<div class=\"category-column\"><div class=\"question\" id=\"c$i\">".$qs[$i]['cat_name']."</div>";
     for ($j = 1; $j < 6; $j++){
         if (isset($_POST["q$i-$j"])){
-            $_SESSION['curr_question'] = "q$i-$j";
+            $_SESSION['curr_question'] = array("q$i-$j", $user_turn);
             array_push($_SESSION['prev_questions'], "q$i-$j");
-            $curr_q_text = $qs[$i][$j]['q'];
+            $curr_q_text = "Question: " . $qs[$i][$j]['q'];
             $q_board_html = $q_board_html . "<form class=\"question\" method=\"post\"><button class=\"question\" type=\"submit\" id=\"q$i-$j\" name=\"q$i-$j\" value=\"q$i-$j\" disabled>". $j * 200 ."</button></form>";
         } elseif (in_array("q$i-$j", $_SESSION['prev_questions'])) {
             $q_board_html = $q_board_html . "<form class=\"question\" method=\"post\"><button class=\"question\" type=\"submit\" id=\"q$i-$j\" name=\"q$i-$j\" value=\"q$i-$j\" disabled>". $j * 200 ."</button></form>";
@@ -144,6 +140,45 @@ for ($i = 0; $i < 5; $i++){
     $q_board_html = $q_board_html . "</div>";
 }
 
+// check answer and swap turns if needed
+if (isset($_POST['answer'])){
+    $curr_cat = (int) substr($_SESSION['curr_question'][0], 1, 1);
+    $curr_q = (int) substr($_SESSION['curr_question'][0], 3, 1);
+    //echo ".*".strtolower($qs[$curr_cat][$curr_q]['a']).".* " . strtolower($_POST['answer']);
+    if (strpos(strtolower($_POST['answer']), strtolower($qs[$curr_cat][$curr_q]['a'])) !== false) {
+        if (sizeof($_SESSION['prev_questions']) == 25){
+            header("Location: leaderboard.php");
+            exit();
+        } else {
+            $_SESSION['curr_question'][0] = "";
+            $curr_q_text = "Correct answer! Points awarded to " . $_SESSION['user'.$user_turn] . ". Choose next question";
+            $_SESSION['user'.$user_turn.'_points'] += 200 * $curr_q;
+        }
+    } else {
+        $next_user = (($user_turn) % $num_users) + 1;
+        if ($next_user == $_SESSION['curr_question'][1]){
+            $curr_q_text = "No one was correct. The correct answer was \"" . $qs[$curr_cat][$curr_q]['a'] . "\". Choose next question";
+            $user_turn = rand(1, $num_users);
+            $_SESSION['curr_question'][0] = "";
+        } else {
+            $curr_q_text = "Question: " . $qs[$curr_cat][$curr_q]['q'];
+            $user_turn = $next_user;
+        }
+        $_SESSION['user_turn'] = $user_turn;
+    }
+}
+
+$turn_text = 'It is '.$_SESSION['user'.$user_turn]."'s turn";
+
+$ans_disabled = " required";
+if ($_SESSION['curr_question'][0] == ""){
+    $ans_disabled = " disabled";
+}
+
+$scoreboard = '';
+for ($i = 1; $i <= $num_users; $i++){
+    $scoreboard = $scoreboard . "<li>" . $_SESSION['user'.$i] . ": " . $_SESSION['user'.$i.'_points'] . " points</li>";
+}
 
 ?>
 
@@ -171,7 +206,7 @@ for ($i = 0; $i < 5; $i++){
             <?=$q_board_html?>
             <form class="answer-box" method="post">
                 <label for="answer">Answer: </label>
-                <input type="text" name="answer" id="answer" placeholder="What is a pigeon?" required>
+                <input type="text" name="answer" id="answer" placeholder="What is a pigeon?"<?=$ans_disabled?>>
                 <button type="submit">Guess</button>
             </form>
         </main>

@@ -28,7 +28,7 @@ for ($i = 1; $i <= $num_users; $i++){
             <h1>Jeopardy</h1>
         </header>
         <main>
-            <h2>Game Results</h2>
+            <h2>Game Over!</h2>
             <ol class="leaderboard">
                 <li>[Username] [Points]</li>
             </ol>
