@@ -71,8 +71,6 @@ function getQuestions(){
 
 session_start();
 
-var_dump(getQuestions());
-
 if (!isset($_SESSION['num_users']) || $_SESSION['num_users'] < 2) {
     $num_users = 2;
 } else {
@@ -110,6 +108,43 @@ if ($user_turn == 0) {
 }
 $turn_text = 'It is '.$_SESSION['user'.$user_turn]."'s turn";
 
+// check if questions have already been generated
+if (!isset($_SESSION['questions'])){
+    $qs = getQuestions();
+    $_SESSION['questions'] = $qs;
+} else {
+    $qs = $_SESSION['questions'];
+}
+
+// check if any questions have been played already
+if (!isset($_SESSION['prev_questions'])) {
+    $_SESSION['prev_questions'] = array();
+}
+
+// question element ids/rep in prev_questions: "q"category index-question level (eg q0-2: category 0, level 2)
+
+// get question board + text setup
+$q_board_html = "";
+$curr_q_text = "Choose a question.";
+$_SESSION['curr_question'] = "";
+for ($i = 0; $i < 5; $i++){
+    $q_board_html = $q_board_html . "<div class=\"category-column\"><div class=\"question\" id=\"c$i\">".$qs[$i]['cat_name']."</div>";
+    for ($j = 1; $j < 6; $j++){
+        if (isset($_POST["q$i-$j"])){
+            $_SESSION['curr_question'] = "q$i-$j";
+            array_push($_SESSION['prev_questions'], "q$i-$j");
+            $curr_q_text = $qs[$i][$j]['q'];
+            $q_board_html = $q_board_html . "<form class=\"question\" method=\"post\"><button class=\"question\" type=\"submit\" id=\"q$i-$j\" name=\"q$i-$j\" value=\"q$i-$j\" disabled>". $j * 200 ."</button></form>";
+        } elseif (in_array("q$i-$j", $_SESSION['prev_questions'])) {
+            $q_board_html = $q_board_html . "<form class=\"question\" method=\"post\"><button class=\"question\" type=\"submit\" id=\"q$i-$j\" name=\"q$i-$j\" value=\"q$i-$j\" disabled>". $j * 200 ."</button></form>";
+        } else {
+            $q_board_html = $q_board_html . "<form class=\"question\" method=\"post\"><button class=\"question\" type=\"submit\" id=\"q$i-$j\" name=\"q$i-$j\" value=\"q$i-$j\">". $j * 200 ."</button></form>";
+        }
+    }
+    $q_board_html = $q_board_html . "</div>";
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -131,20 +166,14 @@ $turn_text = 'It is '.$_SESSION['user'.$user_turn]."'s turn";
                     </ul>
                 </div>
                 <div class="turn"><h2><?=$turn_text?></h2></div>
+                <div class="turn"><h3><?=$curr_q_text?></h3></div>
             </div>
-            <div class="category-column">
-                <div class="question">200</div>
-                <div class="question">400</div>
-                <div class="question">600</div>
-                <div class="question">800</div>
-                <div class="question">1000</div>
-            </div>
+            <?=$q_board_html?>
             <form class="answer-box" method="post">
                 <label for="answer">Answer: </label>
                 <input type="text" name="answer" id="answer" placeholder="What is a pigeon?" required>
                 <button type="submit">Guess</button>
             </form>
-            <div class="timer">## sec</div>
         </main>
     </body>
 </html>
