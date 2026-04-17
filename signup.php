@@ -30,29 +30,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+    <head>
+        <title>Jeopardy- Signup</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Jeopardy</h1>
+        </header>
+        <main>
+            <h2>Sign Up</h2>
+            
+            <?php if ($error != ""): ?>
+                <p class="error"><?= $error ?></p>
+            <?php endif; ?>
 
-<head>
-    <title>Signup</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-    <h1>Signup</h1>
-
-    <?php if ($error != ""): ?>
-        <p class="error"><?= $error ?></p>
-    <?php endif; ?>
-
-    <form method="post">
-        <input type="text" name="user1" placeholder="Username">
-        <input type="password" name="pass1" placeholder="Password">
-        <button type="submit">Create Account</button>
-    </form>
-
-    <a href="login.php">Already have an account? Login</a>
-
-</body>
-
+            <form class="signup-form" method="post" action="login.php">
+                <legend>New User</legend>
+                <label for="user">Username: </label>
+                <input type="text" name="user" id="user" placeholder="epictriviafan_123" required>
+                <label for="pass">Password: </label>
+                <input type="password" name="pass" id="pass" required>
+                <button type="submit">Create Account</button>
+            </form>
+            <a href="login.php"><button class="link-button" type="button">Already have an account? Login</button></a>
+        </main>
+    </body>
 </html>

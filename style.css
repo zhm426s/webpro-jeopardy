@@ -11,8 +11,7 @@ header {
     padding: 15px;
 }
 
-h1,
-h2 {
+h1, h2 {
     margin: 10px;
 }
 
@@ -29,13 +28,12 @@ main {
     flex-wrap: wrap;
 }
 
-.login-form,
-form {
+.login-form, form, .scoreboard {
     background: white;
     padding: 15px;
     border-radius: 10px;
     width: 260px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 /* INPUTS */
@@ -60,24 +58,54 @@ button:hover {
     background-color: #0056b3;
 }
 
+button:disabled {
+    background-color: #444;
+}
+
 .link-button {
     margin: 10px;
 }
 
+/* ERROR */
 .error {
     color: red;
     font-weight: bold;
 }
 
-/* responsive */
+/* RESPONSIVE */
 @media (max-width: 600px) {
     .form-group {
         flex-direction: column;
         align-items: center;
     }
 
-    .login-form,
-    form {
+    .login-form, form {
         width: 90%;
     }
+
+    .category-column {
+        width: 85%;
+    }
+}
+
+.questionboard {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.scoreboard {
+    width: 400px;
+}
+
+form.question {
+    width: 80%;
+}
+
+.category-column {
+    width: 200px;
+}
+
+.answer-box {
+    margin: 3em;
 }
