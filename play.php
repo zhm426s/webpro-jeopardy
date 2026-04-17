@@ -84,8 +84,10 @@ for ($i = 1; $i <= $num_users; $i++) {
         header("Location: login.php");
         exit();
     } else {
-        // initiate point session var
-        $_SESSION['user' . $i . '_points'] = 0;
+        if (!isset($_SESSION['user' . $i . '_points'])){
+            // initiate point session var
+            $_SESSION['user' . $i . '_points'] = 0;
+        }
     }
 }
 
@@ -98,9 +100,7 @@ if (isset($_SESSION['user_turn'])){
 // check if it is a new game (not included in above for if the leaderboard was accessed already)
 if ($user_turn == 0) {
     $user_turn = rand(1, $num_users);
-    $_SESSION['user_turn'] = $user_turn;
-
-    
+    $_SESSION['user_turn'] = $user_turn; 
 }
 
 // check if questions have already been generated
@@ -205,10 +205,12 @@ for ($i = 1; $i <= $num_users; $i++){
                         <?=$scoreboard?>
                     </ul>
                 </div>
-                <div class="turn"><h2><?=$turn_text?></h2></div>
-                <div class="turn"><h3><?=$curr_q_text?></h3></div>
+                <div class="turn"><h2><?=$curr_q_text?></h2></div>
+                <div class="turn"><h3><?=$turn_text?></h3></div>
             </div>
-            <?=$q_board_html?>
+            <div class="questionboard">
+                <?=$q_board_html?>
+            </div>
             <form class="answer-box" method="post">
                 <label for="answer">Answer: </label>
                 <input type="text" name="answer" id="answer" placeholder="What is a pigeon?"<?=$ans_disabled?>>

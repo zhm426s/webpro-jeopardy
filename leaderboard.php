@@ -8,11 +8,17 @@ if (!isset($_SESSION['num_users']) || $_SESSION['num_users'] < 2) {
 
 for ($i = 1; $i <= $num_users; $i++) {
     if ((!isset($_SESSION['user' . $i]) || $_SESSION['user' . $i] === '') && !isset($_SESSION['user' . $i . '_points'])) {
-        $_SESSION['leaderboard_error'] = "Error: not all users are signed in. Please complete all logins before viewing results.";
+        $_SESSION['game_error'] = "Error: not all users are signed in. Please complete all logins before viewing results.";
         header("Location: login.php");
         exit();
     }
 }
+
+// unset gameplay session vars
+unset($_SESSION['user_turn']);
+unset($_SESSION['questions']);
+unset($_SESSION['prev_questions']);
+unset($_SESSION['curr_question']);
 
 $leaderboard = array();
 
@@ -25,6 +31,7 @@ for ($i = 1; $i <= $num_users; $i++) {
             'username' => $username,
             'points' => $points
         );
+        unset($_SESSION['user' . $i . '_points']);
     }
 }
 
@@ -32,6 +39,7 @@ for ($i = 1; $i <= $num_users; $i++) {
 usort($leaderboard, function ($a, $b) {
     return $b['points'] - $a['points'];
 });
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,10 +58,16 @@ usort($leaderboard, function ($a, $b) {
         <h2>Game Results</h2>
         <ol class="leaderboard">
             <?php
-            foreach ($leaderboard as $player) {
-                echo "<li>" . htmlspecialchars($player['username']) . " - " . $player['points'] . " Points</li>";
+            //display leaderboard
+            foreach ($leaderboard as $k => $player) {
+                $winner = "";
+                if ($k == 0){
+                    $winner = "-- WINNER!";
+                }
+                echo "<li>" . htmlspecialchars($player['username']) . " - " . $player['points'] . " Points$winner</li>";
             }
-            ?>//display leaderboard
+            ?>
+            
         </ol>
         <a href="login.php"><button class="link-button" type="button">Go to Home</button></a>
         <a href="play.php"><button class="link-button" type="button">Play Again!</button></a>

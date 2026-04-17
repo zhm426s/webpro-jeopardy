@@ -28,7 +28,7 @@ main {
     flex-wrap: wrap;
 }
 
-.login-form, form {
+.login-form, form, .scoreboard {
     background: white;
     padding: 15px;
     border-radius: 10px;
@@ -58,6 +58,10 @@ button:hover {
     background-color: #0056b3;
 }
 
+button:disabled {
+    background-color: #444;
+}
+
 .link-button {
     margin: 10px;
 }
@@ -78,4 +82,30 @@ button:hover {
     .login-form, form {
         width: 90%;
     }
+
+    .category-column {
+        width: 85%;
+    }
+}
+
+.questionboard {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.scoreboard {
+    width: 400px;
+}
+
+form.question {
+    width: 80%;
+}
+
+.category-column {
+    width: 200px;
+}
+
+.answer-box {
+    margin: 3em;
 }

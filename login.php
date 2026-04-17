@@ -83,6 +83,15 @@ $loggedin = array(); // array will store numbers of users that are logged in
 
 $login_forms = array(); // array will store the form visual for all users, logged in or not
 
+$logged_out_text = "<form class=\"login-form\" method=\"post\">
+                <legend>User $i</legend>
+                <label for=\"user$i\">Username: </label>
+                <input type=\"text\" name=\"user$i\" id=\"user$i\" placeholder=\"epictriviafan_123\" required>
+                <label for=\"pass$i\">Password: </label>
+                <input type=\"password\" name=\"pass$i\" id=\"pass$i\" required>
+                <button type=\"submit\">Log In</button>
+            </form>";
+
 // check which users have posted a login
 for ($i = 1; $i <= $num_users; $i++) {
     // first check if user is already logged in, skip if so
@@ -91,14 +100,7 @@ for ($i = 1; $i <= $num_users; $i++) {
             // unset the user's session var
             unset($_SESSION['user' . $i]);
             $_SESSION['logout_message'] = "User logged out successfully.";
-            array_push($login_forms, "<form class=\"login-form\" method=\"post\">
-                <legend>User $i</legend>
-                <label for=\"user$i\">Username: </label>
-                <input type=\"text\" name=\"user$i\" id=\"user$i\" placeholder=\"epictriviafan_123\" required>
-                <label for=\"pass$i\">Password: </label>
-                <input type=\"password\" name=\"pass$i\" id=\"pass$i\" required>
-                <button type=\"submit\">Log In</button>
-            </form>");
+            array_push($login_forms, $logged_out_text);
         } else {
             $this_user = $_SESSION['user' . $i];
 
@@ -108,9 +110,9 @@ for ($i = 1; $i <= $num_users; $i++) {
                     <input type=\"text\" name=\"user$i\" id=\"user$i\" placeholder=\"$this_user\" disabled>
                     <label for=\"pass$i\">Password: </label>
                     <input type=\"password\" name=\"pass$i\" id=\"pass$i\" disabled>
-                    </form>
                     <form method=\"post\">
                     <button class=\"link-button\" type=\"submit\" value=\"out$i\" name=\"logout\" id=\"logout\">Log Out</button>
+                    </form>
                     </form>");
         }
 
@@ -138,30 +140,16 @@ for ($i = 1; $i <= $num_users; $i++) {
                 <input type=\"text\" name=\"user$i\" id=\"user$i\" placeholder=\"" . htmlspecialchars($this_user) . "\" value=\"\" disabled>
                 <label for=\"pass$i\">Password: </label>
                 <input type=\"password\" name=\"pass$i\" id=\"pass$i\" disabled>
-                </form>
                 <form method=\"post\">
                 <button class=\"link-button\" type=\"submit\" value=\"out$i\" name=\"logout\" id=\"logout\">Log Out</button>
+                </form>
                 </form>");
         } else {
             $errors[$i] = "Incorrect password.";
-            array_push($login_forms, "<form class=\"login-form\" method=\"post\">
-                <legend>User $i</legend>
-                <label for=\"user$i\">Username: </label>
-                <input type=\"text\" name=\"user$i\" id=\"user$i\" placeholder=\"epictriviafan_123\" required>
-                <label for=\"pass$i\">Password: </label>
-                <input type=\"password\" name=\"pass$i\" id=\"pass$i\" required>
-                <button type=\"submit\">Log In</button>
-            </form>");
+            array_push($login_forms, $logged_out_text);
         }
     } else {
-        array_push($login_forms, "<form class=\"login-form\" method=\"post\">
-                <legend>User $i</legend>
-                <label for=\"user$i\">Username: </label>
-                <input type=\"text\" name=\"user$i\" id=\"user$i\" placeholder=\"epictriviafan_123\" required>
-                <label for=\"pass$i\">Password: </label>
-                <input type=\"password\" name=\"pass$i\" id=\"pass$i\" required>
-                <button type=\"submit\">Log In</button>
-            </form>");
+        array_push($login_forms, $logged_out_text);
     }
 }
 ?>
@@ -195,9 +183,9 @@ for ($i = 1; $i <= $num_users; $i++) {
         }
         ?>
         <?php
-        if (isset($_SESSION['leaderboard_error'])) {
-            echo "<p class='error'>" . $_SESSION['leaderboard_error'] . "</p>";
-            unset($_SESSION['leaderboard_error']);
+        if (isset($_SESSION['game_error'])) {
+            echo "<p class='error'>" . $_SESSION['game_error'] . "</p>";
+            unset($_SESSION['game_error']);
         }
         ?>
         <?php
