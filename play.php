@@ -75,18 +75,17 @@ if (!isset($_SESSION['num_users']) || $_SESSION['num_users'] < 2) {
     $num_users = 2;
 } else {
     $num_users = $_SESSION['num_users'];
-    }
+}
 
 // ensure all users are logged in, and get/initiate points if so
-for ($i = 1; $i <= $num_users; $i++){
-    if (!isset($_SESSION['user'.$i]) || $_SESSION['user'.$i] === ''){
-        echo "Error: not all users signed in";
-        exit;
+for ($i = 1; $i <= $num_users; $i++) {
+    if (!isset($_SESSION['user' . $i]) || $_SESSION['user' . $i] === '') {
+        $_SESSION['game_error'] = "Error: not all users are signed in. Please log in all players before starting the game.";
+        header("Location: login.php");
+        exit();
     } else {
-        if (!isset($_SESSION['user'.$i.'_points'])){
-            // initiate point session var
-            $_SESSION['user'.$i.'_points'] = 0;
-        }
+        // initiate point session var
+        $_SESSION['user' . $i . '_points'] = 0;
     }
 }
 
@@ -193,6 +192,13 @@ for ($i = 1; $i <= $num_users; $i++){
             <h1 class="game">Jeopardy</h1>
         </header>
         <main>
+            <?php
+            if (isset($_SESSION['game_error'])) {
+                echo "<p class='error'>" . $_SESSION['game_error'] . "</p>";
+                unset($_SESSION['game_error']);
+                exit();
+            }
+            ?>
             <div>
                 <div class="scoreboard">
                     <ul>
