@@ -1,4 +1,6 @@
 <?php
+include 'common.php';
+
 $error = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -29,18 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Jeopardy- Signup</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <header>
-            <h1>Jeopardy</h1>
-        </header>
-        <main>
+<?=$header_pre_title?> - Signup<?=$header_post_title?>
             <h2>Sign Up</h2>
             
             <?php if ($error != ""): ?>
@@ -56,6 +47,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button type="submit">Create Account</button>
             </form>
             <a href="login.php"><button class="link-button" type="button">Already have an account? Login</button></a>
-        </main>
-    </body>
-</html>
+<?=$bottom?>

@@ -1,4 +1,6 @@
 <?php
+include 'common.php';
+
 // function for randomizing category placements
 function getCategories(){
     // array storing all category names: should be updated if more categories are added
@@ -252,18 +254,7 @@ if ($game_diff == 1){
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Jeopardy</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <header>
-            <h1 class="game">Jeopardy</h1>
-        </header>
-        <main>
+<?=$header_pre_title?><?=$header_post_title?>
             <?php
             if (isset($_SESSION['game_error'])) {
                 echo "<p class='error'>" . $_SESSION['game_error'] . "</p>";
@@ -289,6 +280,4 @@ if ($game_diff == 1){
                 <input type="text" name="answer" id="answer" placeholder="What is a pigeon?"<?=$ans_disabled?>>
                 <button type="submit">Guess</button>
             </form>
-        </main>
-    </body>
-</html>
+<?=$bottom?>

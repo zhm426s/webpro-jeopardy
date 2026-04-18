@@ -1,5 +1,7 @@
 <?php
 
+include 'common.php';
+
 function getFormHTML($i, $in){
     if ($in === "in"){
         return "<form class=\"login-form\" method=\"post\">
@@ -153,20 +155,7 @@ for ($i = 1; $i <= $num_users; $i++) {
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>Jeopardy- Login</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-    <header>
-        <h1>Jeopardy</h1>
-    </header>
-    <main>
+<?=$header_pre_title?> - Login<?=$header_post_title?>
         <h2>Login</h2>
         <?php
         for ($i = 0; $i < $num_users; $i++) {
@@ -202,7 +191,4 @@ for ($i = 1; $i <= $num_users; $i++) {
         </form>
         <a href="signup.php"><button class="link-button" type="button">Create New Account</button></a>
         <a href="play.php"><button class="link-button" type="button">Play Jeopardy!</button></a>
-    </main>
-</body>
-
-</html>
+<?=$bottom?>
