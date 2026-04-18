@@ -1,0 +1,29 @@
+Movies;1;Featured in the "Harry Potter" movies, this hat takes its name from its function at Hogwarts school;Sorting Hat;2
+Movies;2;"Bohemian Rhapsody" earned him an Oscar for his "mercurial" performance;Rami Malek;2
+Movies;3;Robert Pattinson is the title character (& the reborn versions thereof) in this 2025 film from Bong Joon Ho;Mickey 17;2
+Movies;4Tom Cruise played a disabled Vietnam vet in this 1989 film that isn't the holiday its title might suggest;Born on the Fourth of July;2
+Movies;5;This 1997 sci-fi film with Laurence Fishburne shares its name with the boundary at the edge of a black hole;Event Horizon;2
+
+Geography;1;This most populous country in Africa is also one of the richest;Nigeria;2
+Geography;2;Divided into 2 sections & 2 main ethnic groups, Cyprus has 2 official languages: Greek & this;Turkish;2
+Geography;3;This North Carolina city is the eastern gateway to the Great Smoky Mountains;Asheville;2
+Geography;4;For more years Çatalhöyük, a city with houses but no streets, thrived in the Anatolia region of what's now this country;Turkey;2
+Geography;5;India shares a more than 400-mile border with this country ruled by King Jigme Khesar Namgyel Wangchuck;Bhutan;2
+
+Riddles;1;This always goes up, but never comes down;Age;2
+Riddles;2;I’m tall when I’m young, and I’m short when I’m old. This is what I am;Candle;2
+Riddles;3;A man was outside in the rain without an umbrella or hat, but didn't get a single hair on his head wet. This is why;Bald;2
+Riddles;4;This 4-letter word can be written forward, backward, or upside down, and can still be read from left to right;Noon;2
+Riddles;5;This item runs all around a backyard, but never makes a move;Fence;2
+
+Sports;1;The cover of the video game NHL 2026 from EA Sports features Matthew Tkachuk of this Florida team raising the Stanley Cup;Panthers;2
+Sports;2;In 2022 Chloe Kim was golden--again--defending her women's halfpipe Olympic title in this sport;Snowboarding;2
+Sports;3;This race entered the Olympic Games in 1900, though it was only standardized at 3,000 meters later;Steeplechase;2
+Sports;4;In this sport, it's a 5-run penalty if a fielder deliberately kicks a ball hit by a batsman over the boundary rope;Cricket;2
+Sports;5;At Asia's first Olympic games, Isao Okano won gold in this sport in the country where it was created;Judo;2
+
+Music;1;In an *NSYNC song, "It ain't no lie, I wanna see you out that door, baby" this this this;Bye Bye Bye;2
+Music;2;This Pete Wentz band came back from a 3-year hiatus with the 2013 hit "My Songs Know What You Did In The Dark (Light 'Em Up)";Fall Out Boy;2
+Music;3;This song opens optimistically with "Comin' out of my cage & I've been doin' just fine", but things go south after that;Mr. Brightside;2
+Music;4;Michelle Pfeiffer was incredibly flattered to be namechecked in this hit, Billboard's Hot 100 No. 1 song of the 2010s;Uptown Funk;2
+Music;5;With "Le Freak", finally someone was urging you to freak out--this disco band, whose name rhymes with the song title;Chic;2

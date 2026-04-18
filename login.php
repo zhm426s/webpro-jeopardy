@@ -1,4 +1,31 @@
 <?php
+
+function getFormHTML($i, $in){
+    if ($in === "in"){
+        return "<form class=\"login-form\" method=\"post\">
+                    <legend>User $i</legend>
+                    <label for=\"user$i\">Username: </label>
+                    <input type=\"text\" name=\"user$i\" id=\"user$i\" placeholder=\"".$_SESSION['user'.$i]."\" disabled>
+                    <label for=\"pass$i\">Password: </label>
+                    <input type=\"password\" name=\"pass$i\" id=\"pass$i\" disabled>
+                    <form method=\"post\">
+                    <button class=\"link-button\" type=\"submit\" value=\"out$i\" name=\"logout\" id=\"logout\">Log Out</button>
+                    </form>
+                    </form>";
+    } else {
+        return "<form class=\"login-form\" method=\"post\">
+            <legend>User $i</legend>
+            <label for=\"user$i\">Username: </label>
+            <input type=\"text\" name=\"user$i\" id=\"user$i\" placeholder=\"epictriviafan_123\" required>
+            <label for=\"pass$i\">Password: </label>
+            <input type=\"password\" name=\"pass$i\" id=\"pass$i\" required>
+            <button type=\"submit\">Log In</button>
+            </form>";
+    }
+}
+
+
+
 session_start();
 // get existing user data from the file
 $exist_users = array();
@@ -83,15 +110,6 @@ $loggedin = array(); // array will store numbers of users that are logged in
 
 $login_forms = array(); // array will store the form visual for all users, logged in or not
 
-$logged_out_text = "<form class=\"login-form\" method=\"post\">
-                <legend>User $i</legend>
-                <label for=\"user$i\">Username: </label>
-                <input type=\"text\" name=\"user$i\" id=\"user$i\" placeholder=\"epictriviafan_123\" required>
-                <label for=\"pass$i\">Password: </label>
-                <input type=\"password\" name=\"pass$i\" id=\"pass$i\" required>
-                <button type=\"submit\">Log In</button>
-            </form>";
-
 // check which users have posted a login
 for ($i = 1; $i <= $num_users; $i++) {
     // first check if user is already logged in, skip if so
@@ -100,20 +118,11 @@ for ($i = 1; $i <= $num_users; $i++) {
             // unset the user's session var
             unset($_SESSION['user' . $i]);
             $_SESSION['logout_message'] = "User logged out successfully.";
-            array_push($login_forms, $logged_out_text);
+            array_push($login_forms, getFormHTML($i, "out"));
         } else {
             $this_user = $_SESSION['user' . $i];
 
-            array_push($login_forms, "<form class=\"login-form\" method=\"post\">
-                    <legend>User $i</legend>
-                    <label for=\"user$i\">Username: </label>
-                    <input type=\"text\" name=\"user$i\" id=\"user$i\" placeholder=\"$this_user\" disabled>
-                    <label for=\"pass$i\">Password: </label>
-                    <input type=\"password\" name=\"pass$i\" id=\"pass$i\" disabled>
-                    <form method=\"post\">
-                    <button class=\"link-button\" type=\"submit\" value=\"out$i\" name=\"logout\" id=\"logout\">Log Out</button>
-                    </form>
-                    </form>");
+            array_push($login_forms, getFormHTML($i, "in"));
         }
 
         // check if user info was posted
@@ -134,22 +143,13 @@ for ($i = 1; $i <= $num_users; $i++) {
         // check password
         if (password_verify($_POST['pass' . $i], addslashes($found_user[1]))) {
             $_SESSION['user' . $i] = $this_user;
-            array_push($login_forms, "<form class=\"login-form\" method=\"post\">
-                <legend>User $i</legend>
-                <label for=\"user$i\">Username: </label>
-                <input type=\"text\" name=\"user$i\" id=\"user$i\" placeholder=\"" . htmlspecialchars($this_user) . "\" value=\"\" disabled>
-                <label for=\"pass$i\">Password: </label>
-                <input type=\"password\" name=\"pass$i\" id=\"pass$i\" disabled>
-                <form method=\"post\">
-                <button class=\"link-button\" type=\"submit\" value=\"out$i\" name=\"logout\" id=\"logout\">Log Out</button>
-                </form>
-                </form>");
+            array_push($login_forms, getFormHTML($i, "in"));
         } else {
             $errors[$i] = "Incorrect password.";
-            array_push($login_forms, $logged_out_text);
+            array_push($login_forms, getFormHTML($i, "out"));
         }
     } else {
-        array_push($login_forms, $logged_out_text);
+        array_push($login_forms, getFormHTML($i, "out"));
     }
 }
 ?>

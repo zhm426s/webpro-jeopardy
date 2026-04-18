@@ -1,0 +1,29 @@
+Movies;1;Norman Jewison directed the 1973 film version of this musical about the most famous Jew & son of all;Jesus Christ Superstar;3
+Movies;2;In this Guillermo del Toro tale set in the 1940s, a faun believes a girl named Ofelia is a mythical princess;Pan's Labyrinth;3
+Movies;3;In Scarlett Johansson's directorial debut, this actress, born in 1929, is "Eleanor the Great", bereft after a friend's death;June Squibb;3
+Movies;4;Peter Sarsgaard is Roone Arledge, but the footage of Jim McKay is real in "September 5" about a tragedy at this city's Olympics;Munich;3
+Movies;5;This Georges Franju classic about plastic surgery inspired a Billy Idol song & an Almodóvar film;Eyes without a face;3
+
+Geography;1;Moving at 4 mph, it should take you about 1/2 an hour to walk around the entire border of this country & its 882 residents;Vatican;3
+Geography;2;This country has land borders with a somewhat larger & with a much larger country;Estonia;3
+Geography;3;This river empties into the South China Sea after rambling through Laos, Cambodia & Vietnam;Mekong;3
+Geography;4;Telephone directories in this Nordic nation of 400,000 list everyone alphabetically by first name;Iceland;3
+Geography;5;Austria has borders with 8 other countries; the shortest, just 21 miles, is with this little land;Liechtenstein;3
+
+Riddles;1;This runs through cities and fields, but never moves;Road;3
+Riddles;2;This has 13 hearts, but no other organs;Heart;3
+Riddles;3;This stalks the countryside with ears that can't hear;Corn;3
+Riddles;4;This fills a room, but takes up no space;Light;3
+Riddles;5;The day before yesterday I was 21, and next year I will be 24. This is my birthday;December 31;3
+
+Sports;1;The team version of this is an Olympic sport that somewhat resembles soccer, but players throw the ball rather than kick it;Handball;3
+Sports;2;On April 1, 1979 David Kirke used an elastic rope & plunged from a bridge in Bristol, England, inventing this extreme sport;Bungee Jumping;3
+Sports;3;Discovered in a pond in Scotland, the oldest known stone for this sport is inscribed with the date 1511;Curling;3
+Sports;4;Let's horse around with this sport of very controlled equine movements;Dressage;3
+Sports;5;Momiji Nishiya, at 13 the youngest gold medalist since 1936, came down the rail to win gold in the street type of this debuting sport in 2021;Skateboarding;3
+
+Music;1;By Britney: "With a taste of your lips, I'm on a ride... I'm addicted to you, don't you know that you're...";Toxic;3
+Music;2;A style of Reebok sneakers is thought to have inspired the title of this Foster The People hit from 2011;Pumped Up Kicks;3
+Music;3;This Rolling Stones song repeats, "Pleased to meet you, hope you guess my name" quite a few times;Sympathy for the Devil;3
+Music;4;Call the doctor! This Foreigner song mentions "I got a fever of a hundred & three";Hot Blooded;3
+Music;5;Lady A sang, "Pour that thing up to the top, I'm coming in hot, hey" this hospitality professional;Bartender;3

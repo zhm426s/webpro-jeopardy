@@ -1,0 +1,29 @@
+Movies;1;"He don't know talkin' good like me & you. So his vocabulistics is limited to I & am & Groot" is explained in this 2014 film;Guardians of the Galaxy;1
+Movies;2;The all-too-simple premise of the game show in this 2012 film--kids murder each other;Hunger Games;1
+Movies;3;The first DVD that Netflix mailed was this spirited film starring Alec Baldwin & Geena Davis as a deceased married couple;Beetlejuice;1
+Movies;4;In this first part of a movie trilogy, New Zealand's Hutt River played the River Anduin;Fellowship of the Ring;1
+Movies;5;She played Indy's goddaughter Helena in "Indiana Jones and the Dial of Destiny";Phoebe Waller-Bridge;1
+
+Geography;1;The highest point of Nepal, it's also the highest mountain in the world;Everest;1
+Geography;2;In 1918 this country adopted a 2-color flag representing blue skies over golden wheat fields, it was readopted in 1992;Ukraine;1
+Geography;3;This island country off the coast of Africa is roughly the size of Texas;Madagascar;1
+Geography;4;Along with Mexico & the United States, this island nation is 1 of 3 countries bordering the Gulf of Mexico;Cuba;1
+Geography;5;This new name for the landlocked kingdom of Swaziland was officially introduced in 2018;Eswatini;1
+
+Riddles;1;This has to be broken before it can be used;Egg;1
+Riddles;2;This object is full of holes, but still can hold water;Sponge;1
+Riddles;3;This begins with an "e" and only contains one letter;Envelope;1
+Riddles;4;This month of the year has 28 days;All;1
+Riddles;5;This concept is always in front of you, but can never be seen;Future;1
+
+Sports;1;This Olympic sport is AKA Korean karate;Taekwondo;1
+Sports;2;This QB moved from the Jets to the Steelers in 2025 & led his new team over his former one 34-32 on opening day;Rodgers;1
+Sports;3;An early version of this ball-&-racket sport in 13th century France was jeu de paume;Tennis;1
+Sports;4;Also a place to store fishing gear, in football it's the area of the offensive backfield seen here;Tackle box;1
+Sports;5;One of the most successful F1 drivers of all time, he holds the record for career victories & was knighted in 2021;Hamilton;1
+
+Music;1;This title ends the Lady Gaga lyric "I'm beautiful in my way 'cause God makes no mistakes, I'm on the right track, baby, I was...";Born this way;1
+Music;2;It's the song that immediately precedes the horror & shame of realizing you've been Rickrolled;Never Gonna Give You Up;1
+Music;3;This song by Jay-Z about having nearly 100 complications took the title & hook from an Ice-T song;99 Problems;1
+Music;4;In a hit from 2005, she was asked, "What's it like in New York City, I'm a thousand miles away, but girl, tonight, you look so pretty";Delilah;1
+Music;5;According to a 2014 song of the summer, she's "so fancy, you already know", she's "in the fast lane, from L.A. to Tokyo";Iggy Azalea;1

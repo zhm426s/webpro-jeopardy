@@ -19,6 +19,7 @@ unset($_SESSION['user_turn']);
 unset($_SESSION['questions']);
 unset($_SESSION['prev_questions']);
 unset($_SESSION['curr_question']);
+unset($_SESSION['ai_diff']);
 
 $leaderboard = array();
 
@@ -32,6 +33,7 @@ for ($i = 1; $i <= $num_users; $i++) {
             'points' => $points
         );
         unset($_SESSION['user' . $i . '_points']);
+        unset($_SESSION['last_3_ans_'.$i]);
     }
 }
 
